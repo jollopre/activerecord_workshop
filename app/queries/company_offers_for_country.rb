@@ -10,6 +10,8 @@ module Queries
       result = @storage
         .where(company_code: company_code)
         .where(country_code: country_code)
+        .includes(payment_option: [:currency, :payment_method])
+        .references(:payment_options, :currencies, :payment_methods)
       result.map { |orm_pricing_setting| build_offer_attrs(orm_pricing_setting) }
     end
 
