@@ -46,7 +46,10 @@ module Queries
 
     class << self
       def call
-        company_code, country_code = CompaniesOfferingManyPricingSettingsPerCountry.new.call.first
+        company_code, country_code = ORM::PricingSetting
+          .group(:company_code, :country_code)
+          .having("count(id) > 1")
+          .pick(:company_code, :country_code)
         
         Infra.logger.info({ message: "Retrieved first company with more than one pricing_setting for a country", details: { company_code: company_code, country_code: country_code }})
 
