@@ -56,13 +56,20 @@ We can benefit of subqueries through ActiveRecord using [from](https://api.rubyo
 
 TBD
 
+## Custom Attributes
+
+ActiveRecord brings the possibility to override the type of an existing attribute defined in a
+model. For instance the experiment [binary_uuid](experiments/binary_uuid.rb#L15) is overriding the
+binary field id with the type `ORM::UuidType`. This type dedicated for uuid defines how the values
+are converted to and from SQL when assigned to the model. Please, refer to the [documentation](https://edgeapi.rubyonrails.org/classes/ActiveRecord/Attributes/ClassMethods.html) for more details.
 
 ## Migrations
 
 TBD
 
-
 ## Advanced
+
+Following topics are to be explored:
 
 * Use [explain](https://api.rubyonrails.org/classes/ActiveRecord/Relation.html#method-i-explain) and [to_sql](https://api.rubyonrails.org/classes/ActiveRecord/Relation.html#method-i-to_sql) to get a sense of the plan executed and the SQL query generated respectively.
 * Combine several SQL statements as one atomic action using [Transaction](https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html).

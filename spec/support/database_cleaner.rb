@@ -6,8 +6,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
   config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
+    if example.metadata[:skip_database_cleaner]
       example.run
+    else
+      DatabaseCleaner.cleaning do
+        example.run
+      end
     end
   end
 end
