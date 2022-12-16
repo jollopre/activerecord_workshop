@@ -14,5 +14,5 @@ primary = ActiveRecord::DatabaseConfigurations::HashConfig.new(
   }
 )
 ActiveRecord::Base.configurations = [primary]
-ActiveRecord::Base.logger = Logger.new(STDOUT)
+ActiveRecord::Base.logger = Logger.new(IO::NULL)
 ActiveRecord::Base.establish_connection(ENV.fetch('APP_ENV').to_sym)

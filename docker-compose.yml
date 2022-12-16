@@ -10,7 +10,7 @@ services:
       - local.env
     command: ["tail", "-f", "/dev/null"]
   db:
-    image: mysql/mysql-server:8.0.28
+    image: mysql/mysql-server:5.7.35
     command: --default-authentication-plugin=mysql_native_password
     environment:
       - MYSQL_ROOT_PASSWORD=s3cret_password
